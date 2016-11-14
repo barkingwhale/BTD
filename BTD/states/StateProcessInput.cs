@@ -11,15 +11,26 @@ namespace BTD.states
         public IBaseState Update()
         {
             var line = Console.ReadLine();
+
+            // if the input is numeric, send it along to the bet state, 
+            //otherwise, handle the string/characters
+            if (line.All(char.IsDigit))
+            {
+                return GameStateManager.gameStateBet;
+            }
+
             switch (line.ToLower())
             {
+                case "a":
+                    return GameStateManager.gameStateAddCredit;
+
+                case "h":
+                    return GameStateManager.gameStateHelp;
+
                 case "q":
                     // TODO.  does this statement belong in it's own state??
                     Console.WriteLine("Thanks for playing!");
                     return GameStateManager.gameStateQuit;
-
-                case "h":
-                    return GameStateManager.gameStateHelp;
 
                 default:
                     // TODO.  does this statement belong in it's own state??
