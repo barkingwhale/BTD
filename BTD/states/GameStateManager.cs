@@ -11,6 +11,7 @@ namespace BTD.states
         public static StatePrompt gameStatePrompt = new StatePrompt();
         public static StateQuit gameStateQuit = new StateQuit();
         public static StateProcessInput gameStateProcessInput = new StateProcessInput();
+        public static StateHelp gameStateHelp = new StateHelp();
 
         // initialize the game to the prompt
         private IBaseState m_currentState = gameStatePrompt;

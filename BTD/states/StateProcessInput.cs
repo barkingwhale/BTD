@@ -18,6 +18,9 @@ namespace BTD.states
                     Console.WriteLine("Thanks for playing!");
                     return GameStateManager.gameStateQuit;
 
+                case "h":
+                    return GameStateManager.gameStateHelp;
+
                 default:
                     // TODO.  does this statement belong in it's own state??
                     Console.WriteLine("Invalid input. Please try again");

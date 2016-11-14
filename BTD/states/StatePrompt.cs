@@ -10,7 +10,10 @@ namespace BTD.states
     {
         public IBaseState Update()
         {
-            Console.Write("prompt: ");
+            // FIXME for the credits
+            int credits = 0;
+            Console.WriteLine("Credit=" + credits.ToString());
+            Console.Write("(H)elp, (A)dd Credit, (Q)uit: ");
 
             return GameStateManager.gameStateProcessInput;
         }
