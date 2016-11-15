@@ -12,7 +12,20 @@ namespace BTD.states
         {
             var line = Console.ReadLine();
 
-            return GameStateManager.gameStateEvaluate;
+            int selection = 0;
+            bool parsed = Int32.TryParse(line, out selection);
+            // FIXME... hardcoded 4
+            if (parsed && ((selection > 0) && (selection <= 4)))
+            {
+                return GameStateManager.gameStateEvaluate;
+            }
+            else
+            {
+                // FIXME... refactor
+                Console.WriteLine("Invalid choice, please choose again");
+                Console.Write("Select: ");
+                return GameStateManager.gameStatePlayerPickCard;
+            }
         }
     }
 }
