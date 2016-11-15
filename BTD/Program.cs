@@ -15,8 +15,11 @@ namespace BTD
             while (GameStateManager.Instance.Update()) {}
 
             // prompt so console doesn't disappear immediately
-            Console.WriteLine("\nGame is over.  Hit any key to close console.");
-            Console.ReadLine();
+            //Console.WriteLine("\nGame is over.  Hit any key to close console.");
+            //Console.ReadLine();
+
+            // pause so we can see the goodbye message
+            System.Threading.Thread.Sleep(1500);
         }
     }
 }

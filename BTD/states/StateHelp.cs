@@ -23,7 +23,7 @@ Good Luck!";
 
         public IBaseState Update()
         {
-            Console.Write(helpText);
+            Console.WriteLine(helpText);
             return GameStateManager.gameStatePrompt;
         }
     }

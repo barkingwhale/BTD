@@ -10,9 +10,12 @@ namespace BTD.states
     {
         public IBaseState Update()
         {
-            // FIXME implement
-            Console.WriteLine("IMPLEMENT BETTING!");
-            return GameStateManager.gameStatePrompt;
+            int credits = Game.Instance.Credits;
+            Console.WriteLine("-------------------------------------------------------------");
+            Console.WriteLine("Credit=" + credits.ToString());
+            Console.WriteLine("Dealer: " + "XX...");
+            Console.Write("Select: ");
+            return GameStateManager.gameStatePlayerPickCard;
         }
     }
 }

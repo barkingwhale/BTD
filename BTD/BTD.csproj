@@ -50,7 +50,9 @@
     <Compile Include="states\IBaseState.cs" />
     <Compile Include="states\StateAddCredit.cs" />
     <Compile Include="states\StateBet.cs" />
+    <Compile Include="states\StateEvaluate.cs" />
     <Compile Include="states\StateHelp.cs" />
+    <Compile Include="states\StatePlayerPickCard.cs" />
     <Compile Include="states\StateProcessInput.cs" />
     <Compile Include="states\StatePrompt.cs" />
     <Compile Include="states\StateQuit.cs" />

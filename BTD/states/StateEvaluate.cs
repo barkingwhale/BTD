@@ -6,13 +6,11 @@ using System.Threading.Tasks;
 
 namespace BTD.states
 {
-    class StateAddCredit : IBaseState
+    class StateEvaluate : IBaseState
     {
         public IBaseState Update()
         {
-            int creditsAdded = Game.Instance.AddCredits();
-            Console.WriteLine("Add credit: " + creditsAdded.ToString());
-
+            Console.WriteLine("Dealer Wins!");
             return GameStateManager.gameStatePrompt;
         }
     }
