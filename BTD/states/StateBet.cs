@@ -11,8 +11,6 @@ namespace BTD.states
             Console.WriteLine("Credit=" + credits.ToString());
 
             Game.Instance.PrintHand(false);
-
-            Console.Write("Select: ");
             return GameStateManager.gameStatePlayerPickCard;
         }
     }

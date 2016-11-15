@@ -136,6 +136,7 @@ namespace BTD
             WinInfo.EWinType winType;
             int winAmount = 0;
 
+
             PlayingCard playerCard = playerCards[PlayerSelection - 1];
             if (dealerCard == playerCard)
             {
