@@ -6,10 +6,21 @@ namespace BTD.states
     {
         public IBaseGameState Update()
         {
-            int creditsAdded = Game.Instance.AddCredits();
-            Console.WriteLine("Add credit: " + creditsAdded.ToString());
+            Console.Write("Add credit: ");
+            var line = Console.ReadLine();
 
-            return GameStateManager.gameStatePrompt;
+            // parse the input to see if it's numeric and > 0
+            int credits = 0;
+            bool parsed = Int32.TryParse(line, out credits);
+            if (parsed && credits > 0)
+            {
+                Game.Instance.AddCredits(credits);
+                return GameStateManager.gameStatePrompt;
+            }
+
+            // if we get here, we had invalid input -- try again
+            Console.WriteLine("Invalid input. Please try again");
+            return GameStateManager.gameStateAddCredit;
         }
     }
 }

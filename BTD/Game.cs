@@ -6,7 +6,6 @@ namespace BTD
 {
     class Game
     {
-        private static int ADD_CREDITS_AMOUNT = 1000;
         private static int NUM_PLAYER_CARDS = 4;
 
         public static Game Instance
@@ -56,14 +55,13 @@ namespace BTD
             return Math.Min(m_prevBet, Credits);
         }
 
-        public int AddCredits()
+        public void AddCredits(int creditsToAdd)
         {
-            Credits += ADD_CREDITS_AMOUNT;
+            Credits += creditsToAdd;
             if (m_prevBet == 0)
             {
                 m_prevBet = 1;
             }
-            return ADD_CREDITS_AMOUNT;
         }
 
         public bool PlacePrevBet()
