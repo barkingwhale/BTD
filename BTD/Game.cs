@@ -6,7 +6,7 @@ namespace BTD
 {
     class Game
     {
-        private static int NUM_PLAYER_CARDS = 4;
+        public static int NUM_PLAYER_CARDS = 4;
 
         public static Game Instance
         {
@@ -42,7 +42,7 @@ namespace BTD
 
         public int Credits { get; private set; } = 0;
         public int Bet { get; private set; } = 0;
-        public int PlayerSelection { get; set; }
+        public int PlayerSelection { get; set; } = 0;
 
         private PlayingCard dealerCard;
         private PlayingCard[] playerCards = new PlayingCard[NUM_PLAYER_CARDS];
@@ -76,7 +76,7 @@ namespace BTD
                 Console.WriteLine("Nice try.  Please bet a valid amount");
                 return false;
             }
-            else if (Credits >= betAmount)
+            else if (betAmount <= Credits)
             {
                 Credits -= betAmount;
                 Bet = betAmount;
@@ -106,7 +106,7 @@ namespace BTD
             Console.Write("Dealer: ");
             Console.Write(dealerCard.ToString());
             Console.Write(", Player: ");
-            for( int i = 1; i <= 4; ++i)
+            for( int i = 1; i <= NUM_PLAYER_CARDS; ++i)
             {
                 // FIXME, validate PlayerSelection
                 bool bSelection = (i == PlayerSelection);

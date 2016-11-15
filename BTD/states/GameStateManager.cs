@@ -34,7 +34,7 @@
             m_currentState = m_currentState.Update();
 
             // if we get to the quit state, we are out of here!
-            return m_currentState != gameStateQuit;
+            return (m_currentState != gameStateQuit);
         }
     }
 }

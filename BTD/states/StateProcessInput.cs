@@ -26,6 +26,7 @@ namespace BTD.states
                 }
             }
 
+            // to lower allows us to handle case insensitive input
             switch (line.ToLower())
             {
                 case "":
