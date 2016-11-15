@@ -2,6 +2,7 @@
 {
     class GameStateManager
     {
+        // the game states do not contain any data, so we can statically define them here
         public static StatePrompt           gameStatePrompt = new StatePrompt();
         public static StateQuit             gameStateQuit = new StateQuit();
         public static StateProcessInput     gameStateProcessInput = new StateProcessInput();
@@ -14,6 +15,7 @@
         // initialize the game to the prompt
         private IBaseGameState m_currentState = gameStatePrompt;
 
+        // singleton to control the GameStateManager instance
         public static GameStateManager Instance
         {
             get

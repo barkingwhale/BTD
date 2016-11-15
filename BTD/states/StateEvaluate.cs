@@ -6,18 +6,19 @@ namespace BTD.states
     {
         public IBaseGameState Update()
         {
-            Game.EWinType winType = Game.Instance.EvaluateWin();
-            switch (winType)
+            Game.WinInfo winInfo = Game.Instance.EvaluateWin();
+            switch (winInfo.WinType)
             {
-                case Game.EWinType.DEALER_WIN:
+                case Game.WinInfo.EWinType.DEALER_WIN:
                     Console.WriteLine("Dealer Wins!");
                     break;
-                case Game.EWinType.PUSH:
-                    Console.WriteLine("Push!");
+                case Game.WinInfo.EWinType.PUSH:
+                    Console.Write("Push! Win=");
+                    Console.WriteLine(winInfo.WinAmount);
                     break;
-                case Game.EWinType.PLAYER_WIN:
-                    //FIXME add win amount
-                    Console.WriteLine("Player Wins!");
+                case Game.WinInfo.EWinType.PLAYER_WIN:
+                    Console.Write("Player Wins! Win=");
+                    Console.WriteLine(winInfo.WinAmount);
                     break;
             }
 

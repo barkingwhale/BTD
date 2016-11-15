@@ -6,7 +6,8 @@ namespace BTD
     {
         static void Main(string[] args)
         {
-            // imediately launch in the game statemanager.  it will handle when to exit
+            // start up the statemanager and keep processing until 
+            // it tells us to exit
             while (GameStateManager.Instance.Update()) {}
 
             // pause so we can see the goodbye message

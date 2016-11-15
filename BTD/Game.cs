@@ -1,4 +1,6 @@
-﻿using System;
+﻿using BTD;
+using System;
+using System.Collections.Generic;
 
 namespace BTD
 {
@@ -20,13 +22,24 @@ namespace BTD
         }
         private static Game m_instance = null;
 
-        public enum EWinType
+        public class WinInfo
         {
-            DEALER_WIN = 0,
-            PUSH,
-            PLAYER_WIN
+            public enum EWinType
+            {
+                DEALER_WIN = 0,
+                PUSH,
+                PLAYER_WIN
+            }
+            public EWinType WinType { get; private set; }
+            public int WinAmount { get; private set; }
+
+            public WinInfo(EWinType winType, int winAmount)
+            {
+                WinType = winType;
+                WinAmount = winAmount;
+            }
         }
-            
+
 
         public int Credits { get; private set; } = 0;
         public int Bet { get; private set; } = 0;
@@ -75,13 +88,11 @@ namespace BTD
                 // but if we win, we will
                 m_prevBet = betAmount;
 
-                // FIXME... move this
-                // new game is starting... shuffle the cards again
-                cardDeck.ShuffleCards();
-                dealerCard = cardDeck.Cards[0];
-                for (int i = 0; i < 4; ++i)
+                List<PlayingCard> hand = cardDeck.GetCardsForHand(NUM_PLAYER_CARDS + 1);
+                dealerCard = hand[0];
+                for (int i = 0; i < NUM_PLAYER_CARDS; ++i)
                 {
-                    playerCards[i] = cardDeck.Cards[i + 1];
+                    playerCards[i] = hand[i + 1];
                 }
                 return true;
             }
@@ -122,23 +133,30 @@ namespace BTD
             Console.Write(Environment.NewLine);
         }
 
-        public EWinType EvaluateWin()
+        public WinInfo EvaluateWin()
         {
+            WinInfo.EWinType winType;
+            int winAmount = 0;
+
             PlayingCard playerCard = playerCards[PlayerSelection - 1];
             if (dealerCard == playerCard)
             {
-                Credits += Bet;
-                return EWinType.PUSH;
+                winAmount = Bet;
+                winType = WinInfo.EWinType.PUSH;
             }
             else if (dealerCard > playerCard)
             {
-                return EWinType.DEALER_WIN;
+                winAmount = 0;
+                winType = WinInfo.EWinType.DEALER_WIN;
             }
             else
             {
-                Credits += Bet * 2;
-                return EWinType.PLAYER_WIN;
+                winAmount = Bet * 2;
+                winType = WinInfo.EWinType.PLAYER_WIN;
             }
+
+            Credits += winAmount;
+            return (new WinInfo(winType, winAmount));
         }
     }
 }

@@ -9,7 +9,9 @@ namespace BTD.states
             int credits = Game.Instance.Credits;
             Console.WriteLine("-------------------------------------------------------------");
             Console.WriteLine("Credit=" + credits.ToString());
+
             Game.Instance.PrintHand(false);
+
             Console.Write("Select: ");
             return GameStateManager.gameStatePlayerPickCard;
         }

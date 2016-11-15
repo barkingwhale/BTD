@@ -11,7 +11,7 @@ namespace BTD.states
             bool bCreditsValid = (Game.Instance.Credits > 0);
 
             // if the input is numeric, send it along to the bet state, 
-            //otherwise, handle the string/characters
+            // otherwise, handle the string/characters
             int bet = 0;
             bool parsed = Int32.TryParse(line, out bet);
             if (parsed && bCreditsValid) 
