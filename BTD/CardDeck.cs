@@ -41,7 +41,7 @@ namespace BTD
             Suit = suit;
         }
 
-        public string GetCardName()
+        public override string ToString()
         {
             StringBuilder cardName = new StringBuilder(Value.ToString() + Suit.ToString());
             cardName.Remove(0, 1); // remove the underscore from the value enum
@@ -78,13 +78,27 @@ namespace BTD
             // opposite of ==
             return !(lhs == rhs);
         }
+        public override bool Equals(object obj)
+        {
+            PlayingCard cardObj = obj as PlayingCard;
+            return (cardObj == this);
+        }
+        public override int GetHashCode()
+        {
+            return base.GetHashCode();
+        }
     }
 
     class CardDeck
     {
         private static int NUM_CARDS = 52;
 
-        private List<PlayingCard> m_cards;
+        public CardDeck()
+        {
+            Init();
+        }
+
+        public List<PlayingCard> Cards { get; private set; } = new List<PlayingCard>();
         public void Init()
         {
             // build the card deck in order
@@ -93,19 +107,20 @@ namespace BTD
                 foreach (PlayingCard.EValues value in Enum.GetValues(typeof(PlayingCard.EValues)))
                 {
                     PlayingCard card = new PlayingCard(value, suit);
-                    m_cards.Add(card);
+                    Cards.Add(card);
                 }
             }
-            System.Diagnostics.Debug.Assert(m_cards.Count == NUM_CARDS);
+            System.Diagnostics.Debug.Assert(Cards.Count == NUM_CARDS);
         }
 
         public void ShuffleCards()
         {
+
             Random rand = new Random();
 
             // iterate through the cards from the back to the front.  we do not have to
             // go all the way to 0, because we will not swap with ourself
-            for( int i = m_cards.Count-1; i < 0; --i)
+            for( int i = Cards.Count-1; i > 0; --i)
             {
                 // pull a randIndex that is from 0 to the current card
                 int randIndex = rand.Next(i);
@@ -113,9 +128,9 @@ namespace BTD
                 // don't need to swap with ourself
                 if (randIndex != i)
                 {
-                    var temp = m_cards[i];
-                    m_cards[i] = m_cards[randIndex];
-                    m_cards[randIndex] = temp;
+                    var temp = Cards[i];
+                    Cards[i] = Cards[randIndex];
+                    Cards[randIndex] = temp;
                 }
             }
         }

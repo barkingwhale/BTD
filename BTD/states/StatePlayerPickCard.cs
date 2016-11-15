@@ -17,6 +17,8 @@ namespace BTD.states
             // FIXME... hardcoded 4
             if (parsed && ((selection > 0) && (selection <= 4)))
             {
+                Game.Instance.PlayerSelection = selection;
+                Game.Instance.PrintHand(true);
                 return GameStateManager.gameStateEvaluate;
             }
             else
