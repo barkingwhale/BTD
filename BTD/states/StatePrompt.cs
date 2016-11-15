@@ -6,9 +6,9 @@ using System.Threading.Tasks;
 
 namespace BTD.states
 {
-    class StatePrompt : IBaseState
+    class StatePrompt : IBaseGameState
     {
-        public IBaseState Update()
+        public IBaseGameState Update()
         {
             int credits = Game.Instance.Credits;
             int prevBet = Game.Instance.GetPrevBetToDisplay();

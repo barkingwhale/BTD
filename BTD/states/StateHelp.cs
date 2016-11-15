@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace BTD.states
 {
-    class StateHelp : IBaseState
+    class StateHelp : IBaseGameState
     {
         string helpText = @"
                 ***Beat the Dealer ***
@@ -21,7 +21,7 @@ If your card is of the same value, you win your bet back.
 Aces are high!
 Good Luck!";
 
-        public IBaseState Update()
+        public IBaseGameState Update()
         {
             Console.WriteLine(helpText);
             return GameStateManager.gameStatePrompt;

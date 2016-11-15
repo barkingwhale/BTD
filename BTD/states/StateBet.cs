@@ -6,9 +6,9 @@ using System.Threading.Tasks;
 
 namespace BTD.states
 {
-    class StateBet : IBaseState
+    class StateBet : IBaseGameState
     {
-        public IBaseState Update()
+        public IBaseGameState Update()
         {
             int credits = Game.Instance.Credits;
             Console.WriteLine("-------------------------------------------------------------");

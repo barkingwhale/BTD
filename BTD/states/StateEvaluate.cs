@@ -6,9 +6,9 @@ using System.Threading.Tasks;
 
 namespace BTD.states
 {
-    class StateEvaluate : IBaseState
+    class StateEvaluate : IBaseGameState
     {
-        public IBaseState Update()
+        public IBaseGameState Update()
         {
             Console.WriteLine("Dealer Wins!");
             return GameStateManager.gameStatePrompt;

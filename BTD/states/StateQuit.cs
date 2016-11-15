@@ -6,9 +6,9 @@ using System.Threading.Tasks;
 
 namespace BTD.states
 {
-    class StateQuit : IBaseState
+    class StateQuit : IBaseGameState
     {
-        public IBaseState Update()
+        public IBaseGameState Update()
         {
             // we are quiting, so this should not matter, but we need to return something.
             return GameStateManager.gameStateQuit;

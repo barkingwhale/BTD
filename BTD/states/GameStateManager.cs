@@ -18,7 +18,7 @@ namespace BTD.states
         public static StateEvaluate         gameStateEvaluate = new StateEvaluate();
 
         // initialize the game to the prompt
-        private IBaseState m_currentState = gameStatePrompt;
+        private IBaseGameState m_currentState = gameStatePrompt;
 
         public static GameStateManager Instance
         {

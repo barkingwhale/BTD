@@ -6,9 +6,9 @@ using System.Threading.Tasks;
 
 namespace BTD.states
 {
-    class StatePlayerPickCard : IBaseState
+    class StatePlayerPickCard : IBaseGameState
     {
-        public IBaseState Update()
+        public IBaseGameState Update()
         {
             var line = Console.ReadLine();
 

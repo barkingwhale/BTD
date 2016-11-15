@@ -6,8 +6,8 @@ using System.Threading.Tasks;
 
 namespace BTD.states
 {
-    interface IBaseState
+    interface IBaseGameState
     {
-        IBaseState Update();
+        IBaseGameState Update();
     }
 }
