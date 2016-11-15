@@ -1,8 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
 using System.Text;
-using System.Threading.Tasks;
 
 namespace BTD
 {
@@ -115,7 +113,6 @@ namespace BTD
 
         public void ShuffleCards()
         {
-
             Random rand = new Random();
 
             // iterate through the cards from the back to the front.  we do not have to
